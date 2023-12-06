@@ -10,21 +10,21 @@ defineProps({
 
 <template>
     <a-layout-sider :collapsed="collapsed" collapsible>
-        <div class="logo" />
+        <div class="logo"></div>
         <a-menu :selectedKeys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item key="1">
             <pie-chart-outlined />
-            <span>Option 1</span>
+            <span>Dashboard</span>
           </a-menu-item>
           <a-menu-item key="2">
             <desktop-outlined />
-            <span>Option 2</span>
+            <span>Cá nhân</span>
           </a-menu-item>
           <a-sub-menu key="sub1">
             <template #title>
               <span>
                 <user-outlined />
-                <span>User</span>
+                <span>Khách hàng</span>
               </span>
             </template>
             <a-menu-item key="3">Tom</a-menu-item>
@@ -35,11 +35,11 @@ defineProps({
             <template #title>
               <span>
                 <team-outlined />
-                <span>Team</span>
+                <span>Sản phẩm</span>
               </span>
             </template>
-            <a-menu-item key="6">Team 1</a-menu-item>
-            <a-menu-item key="8">Team 2</a-menu-item>
+            <a-menu-item key="6">Quản lí</a-menu-item>
+            <a-menu-item key="8">Tạo bài đăng</a-menu-item>
           </a-sub-menu>
           <a-menu-item key="9">
             <file-outlined />

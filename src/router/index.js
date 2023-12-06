@@ -13,6 +13,11 @@ const routes = [
         name: "Not Found", 
         component: () => import("../views/NotFound.vue"),
     },
+    {
+        path: "/Dashboard",
+        name: "Dashboard",
+        component: () => import("../views/admin/pages/Dashboard.vue")
+    }
 ];
 
 const router = createRouter({   
