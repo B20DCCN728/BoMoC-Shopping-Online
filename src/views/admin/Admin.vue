@@ -1,32 +1,35 @@
 <template>
-    <a-layout style="min-height: 100vh">
-      <Sidebar :collapsed="collapsed" :selected-keys="selectedKeys"/>
-      <a-layout>
+  <Header />
+  <a-layout style="min-height: 100vh">
+    <Sidebar :selected-keys="selectedKeys"/>
+    <a-layout>
       <a-layout-header style="background: #fff; padding: 0" />
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
-          <a-breadcrumb-item>User</a-breadcrumb-item>
-          <a-breadcrumb-item>Bill</a-breadcrumb-item>
+          <a-breadcrumb-item>Home</a-breadcrumb-item>
+          <a-breadcrumb-item>Dashboard</a-breadcrumb-item>
         </a-breadcrumb>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
-          Bill is a cat.
+          Nguyen Hoang Viet is B20DCCN728 - PTIT
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
         BoMoC ©2023 Created by B20DCCN728 - PTIT
       </a-layout-footer>
     </a-layout>
-    </a-layout>
-  </template>
-  <script setup>
+  </a-layout>
+</template>
+
+<script setup>
   import { ref } from 'vue';
   import  Sidebar  from '../../components/admin/Sidebar.vue';
+  import Header from '../../components/admin/Header.vue';
 
-  const collapsed = ref(false);
-  const selectedKeys = ref(['2']);
+  const selectedKeys = ref(['2']);  
 
-  </script>
-  <style scoped>
+</script>
+
+<style scoped>
   #components-layout-demo-side .logo {
     height: 32px;
     margin: 16px;
@@ -39,4 +42,4 @@
   [data-theme='dark'] .site-layout .site-layout-background {
     background: #141414;
   }
-  </style>
+</style>

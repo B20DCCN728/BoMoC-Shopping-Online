@@ -1,17 +1,24 @@
 <script setup>
+import {
+PieChartOutlined,
+DesktopOutlined,
+UserOutlined,
+TeamOutlined,
+FileOutlined,
+} from '@ant-design/icons-vue';
 import { ref, defineProps } from 'vue';
 
-defineProps({
-  collapsed: Boolean,
-  selectedKeys: Array
+const props = defineProps({
+  selectedKeys: Array,
 });
+
+const collapsed = ref(false);
 
 </script>
 
 <template>
-    <a-layout-sider :collapsed="collapsed" collapsible>
-        <div class="logo"></div>
-        <a-menu :selectedKeys="selectedKeys" theme="dark" mode="inline">
+    <a-layout-sider v-model:collapsed="collapsed" collapsible>
+        <a-menu :selected-keys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item key="1">
             <pie-chart-outlined />
             <span>Dashboard</span>

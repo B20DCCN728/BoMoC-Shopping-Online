@@ -1,21 +1,9 @@
 <template>
-    <a-layout-header class="header">
-      <div class="logo" />
-      <a-menu
-        v-model:selectedKeys="selectedKeys1"
-        theme="dark"
-        mode="horizontal"
-        :style="{ lineHeight: '64px' }"
-      >
-        <a-menu-item key="1">nav 1</a-menu-item>
-        <a-menu-item key="2">nav 2</a-menu-item>
-        <a-menu-item key="3">nav 3</a-menu-item>
-
-      </a-menu>
-    </a-layout-header>
     <a-layout style="min-height: 100vh">
       <a-layout-sider v-model:collapsed="collapsed" collapsible>
-        <div class="logo" />
+        <div class="logo" > 
+          <img src="../../../../src/assets/logo/logo.png" style="width: 10rem;" alt="logo" />
+        </div>
         <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item key="1">
             <pie-chart-outlined />
@@ -43,7 +31,7 @@
                 <span>Team</span>
               </span>
             </template>
-            <a-menu-item key="6">Team 1</a-menu-item>
+            <a-menu-item key="6">Leader</a-menu-item>
             <a-menu-item key="8">Team 2</a-menu-item>
           </a-sub-menu>
           <a-menu-item key="9">
