@@ -8,6 +8,7 @@ FileOutlined,
 MenuOutlined,
 FileDoneOutlined,
 SettingOutlined,
+FormOutlined,
 } from '@ant-design/icons-vue';
 import { ref, defineProps } from 'vue';
 
@@ -58,15 +59,19 @@ const collapsed = ref(false);
                 <span>Catalog</span>
               </span>
             </template>
-            <a-menu-item key="9">Sản phẩm </a-menu-item>
+            <a-menu-item key="9">Sản phẩm</a-menu-item>
             <a-menu-item key="10">Categories</a-menu-item>
             <a-menu-item key="11">Phiếu giảm giá</a-menu-item>
           </a-sub-menu>
           <a-menu-item key="12">
+            <form-outlined />
+            <span>Bài đăng</span>
+          </a-menu-item>  
+          <a-menu-item key="13">
             <file-done-outlined />
             <span>Orders</span>
           </a-menu-item>
-          <a-menu-item key="13">
+          <a-menu-item key="14">
             <setting-outlined />
             <span>Setting</span>
           </a-menu-item>

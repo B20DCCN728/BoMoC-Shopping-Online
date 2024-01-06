@@ -1,10 +1,12 @@
-// import './assets/main.css'
+// import './assets/css/base.css'
+import './assets/fontawesome-free-6.4.0-web/css/all.min.css';
 
 import { createApp } from 'vue'
 import App from './App.vue'
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/reset.css';
 import router from './router/index.js';
+
 
 const app = createApp(App);
 
