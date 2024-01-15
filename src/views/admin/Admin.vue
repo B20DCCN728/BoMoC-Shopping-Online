@@ -11,7 +11,7 @@
         </a-breadcrumb>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
           <!-- Nguyen Hoang Viet is B20DCCN728 - PTIT -->
-          <content-editor />
+          <router-view></router-view>
         </div>
       </a-layout-content>
       <a-layout-footer style="text-align: center">
@@ -25,7 +25,6 @@
   import { ref } from 'vue';
   import  Sidebar  from '../../components/admin/Sidebar.vue';
   import Header from '../../components/admin/Header.vue';
-  import ContentEditor from '../../components/ckeditors/ContentEditor.vue';
 
   const selectedKeys = ref(['2']);  
 

@@ -1057,7 +1057,11 @@ const editorConfig = ref({
 
 <template>
 	<div>
-		<CKEditor :editor="ClassicEditor" v-model="editorData" :config="editorConfig"/>
+		<CKEditor 
+			:editor="ClassicEditor" 
+			v-model="editorData" 
+			:config="editorConfig"
+		/>
 	</div>
 </template>
 

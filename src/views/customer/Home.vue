@@ -239,10 +239,6 @@ onMounted(() => {
   margin-left: 9px;
 }
 
-.category-item {
-
-}
-
 .category-link--active .category-link {
   color: var(--primary-color);
 }

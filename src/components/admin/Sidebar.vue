@@ -16,6 +16,7 @@ const props = defineProps({
   selectedKeys: Array,
 });
 
+
 const collapsed = ref(false);
 
 </script>
@@ -29,7 +30,7 @@ const collapsed = ref(false);
           </a-menu-item>
           <a-menu-item key="2">
             <desktop-outlined />
-            <span>Cá nhân</span>
+            <span>Tài khoản</span>
           </a-menu-item>
           <a-sub-menu key="sub1">
             <template #title>
