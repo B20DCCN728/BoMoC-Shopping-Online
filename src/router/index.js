@@ -5,30 +5,25 @@ import { createRouter, createWebHistory } from "vue-router";
 const routes = [
     {
         path: "/",
-        name: "Admin",
+        name: "admin",
         component: () => import("../views/admin/Admin.vue"),
         children: [
             {
                 path: "dashboard",
-                name: "Dashboard",
+                name: "dashboard",
                 component: () => import("../views/admin/pages/Dashboard.vue"),
             },
             {
                 path: "creator",
-                name: "Creator",
+                name: "creator",
                 component: () => import("../views/admin/pages/Creator.vue"),
-            },
+            }
         ]
     },
     {
-        path: "/ok",
+        path: "/:pathMatch(.*)*",
         name: "Not Found", 
         component: () => import("../views/NotFound.vue"),
-    },
-    {
-        path: "/Dashboard",
-        name: "Dashboard",
-        component: () => import("../views/admin/pages/Dashboard.vue")
     },
     {
         path: "/home",
@@ -49,10 +44,3 @@ const router = createRouter({
 
 export default router;
 
-// children: [
-//     {
-//         path: "dashboard",
-//         name: "dashboard",
-//         component: () => import("../views/admin/pages/Dashboard.vue"),
-//     }            
-// ],

@@ -10,12 +10,12 @@ FileDoneOutlined,
 SettingOutlined,
 FormOutlined,
 } from '@ant-design/icons-vue';
-import { ref, defineProps } from 'vue';
+import { ref, defineProps, computed, reactive } from 'vue';
+import { useRouter } from 'vue-router';
 
 const props = defineProps({
   selectedKeys: Array,
 });
-
 
 const collapsed = ref(false);
 
@@ -24,7 +24,14 @@ const collapsed = ref(false);
 <template>
     <a-layout-sider v-model:collapsed="collapsed" collapsible>
         <a-menu :selected-keys="selectedKeys" theme="dark" mode="inline">
-          <a-menu-item key="1">
+          <a-menu-item 
+            key="1" 
+            @click="() => {
+                selectedKeys = ['1']
+                this.$router.push(`/dashboard`)
+              }
+            "
+          >
             <pie-chart-outlined />
             <span>Dashboard</span>
           </a-menu-item>
@@ -64,7 +71,13 @@ const collapsed = ref(false);
             <a-menu-item key="10">Categories</a-menu-item>
             <a-menu-item key="11">Phiếu giảm giá</a-menu-item>
           </a-sub-menu>
-          <a-menu-item key="12">
+          <a-menu-item key="12"
+          @click="() => {
+                selectedKeys = ['12']
+                this.$router.push(`/creator`)
+              }
+            "
+          >
             <form-outlined />
             <span>Bài đăng</span>
           </a-menu-item>  

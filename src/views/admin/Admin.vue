@@ -26,7 +26,7 @@
   import  Sidebar  from '../../components/admin/Sidebar.vue';
   import Header from '../../components/admin/Header.vue';
 
-  const selectedKeys = ref(['2']);  
+  const selectedKeys = ref(['1']);  
 
 </script>
 
