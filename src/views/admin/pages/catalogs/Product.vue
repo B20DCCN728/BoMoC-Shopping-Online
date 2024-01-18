@@ -3,25 +3,50 @@ import { computed, ref, unref, reactive } from 'vue';
 import { Table } from 'ant-design-vue';
 const columns = [
   {
-    title: 'Name',
+    title: 'Id',
+    dataIndex: 'id',
+  },
+  {
+    title: 'Tên',
     dataIndex: 'name',
   },
   {
-    title: 'Age',
-    dataIndex: 'age',
+    title: 'Hình ảnh',
+    dataIndex: "image",
   },
   {
-    title: 'Address',
-    dataIndex: 'address',
+    title: 'Giá',
+    dataIndex: 'price',
   },
+  {
+    title: 'Số lượng',
+    dataIndex: 'quantity',
+  },
+  { 
+    title: 'Ngày tạo',
+    dataIndex: 'addedDate',
+  },
+  {
+    title: 'Số lượng trang',
+    dataIndex: 'pages',
+  },
+  {
+    title: 'Thể loại',
+    dataIndex: 'genre',
+  }
 ];
 const data = [];
 for (let i = 0; i < 46; i++) {
   data.push({
     key: i,
+    id: i,
     name: `Edward King ${i}`,
-    age: 32,
-    address: `London, Park Lane no. ${i}`,
+    price: '120.000$',
+    image: '',
+    quantity: 56,
+    addedDate: '1/18/2024',
+    pages: 1200,
+    genre: `Joke ${i}`,
   });
 }
 const selectedRowKeys = ref([]); // Check here to configure the default column
@@ -219,6 +244,39 @@ const onClose = () => {
                 </a-form-item>
               </a-col>
             </a-row>
+            <a-row :gutter="16">
+              <a-col :span="24">
+                <a-form-item label="Description" name="description">
+                  <a-textarea
+                    v-model:value="form.description"
+                    :rows="4"
+                    placeholder="please enter url description"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="16">
+              <a-col :span="24">
+                <a-form-item label="Description" name="description">
+                  <a-textarea
+                    v-model:value="form.description"
+                    :rows="4"
+                    placeholder="please enter url description"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
+            <a-row :gutter="16">
+              <a-col :span="24">
+                <a-form-item label="Description" name="description">
+                  <a-textarea
+                    v-model:value="form.description"
+                    :rows="4"
+                    placeholder="please enter url description"
+                  />
+                </a-form-item>
+              </a-col>
+            </a-row>
           </a-form>
           <template #extra>
             <a-space>
@@ -228,7 +286,58 @@ const onClose = () => {
           </template>
         </a-drawer>
 
-        <!-- Add your product management logic and UI here -->
-        <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" />       
+        <!-- Table of content -->
+        <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" bordered >
+          <template #bodyCell="{ column, text, record }">
+            <template v-if="column.dataIndex === 'name'">
+              <div class="">
+              </div>
+            </template>
+          </template>
+        </a-table>   
+
     </div>
 </template>
+
+<style lang="less" scoped>
+.editable-cell {
+  position: relative;
+  .editable-cell-input-wrapper,
+  .editable-cell-text-wrapper {
+    padding-right: 24px;
+  }
+
+  .editable-cell-text-wrapper {
+    padding: 5px 24px 5px 5px;
+  }
+
+  .editable-cell-icon,
+  .editable-cell-icon-check {
+    position: absolute;
+    right: 0;
+    width: 20px;
+    cursor: pointer;
+  }
+
+  .editable-cell-icon {
+    margin-top: 4px;
+    display: none;
+  }
+
+  .editable-cell-icon-check {
+    line-height: 28px;
+  }
+
+  .editable-cell-icon:hover,
+  .editable-cell-icon-check:hover {
+    color: #108ee9;
+  }
+
+  .editable-add-btn {
+    margin-bottom: 8px;
+  }
+}
+.editable-cell:hover .editable-cell-icon {
+  display: inline-block;
+}
+</style>
