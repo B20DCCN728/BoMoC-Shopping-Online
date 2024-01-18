@@ -17,6 +17,16 @@ const routes = [
                 path: "creator",
                 name: "creator",
                 component: () => import("../views/admin/pages/Creator.vue"),
+            },
+            {
+                path: "product",
+                name: "product",
+                component: () => import("../views/admin/pages/catalogs/Product.vue"),
+            },
+            {
+                path: "category",
+                name: "category",
+                component: () => import("../views/admin/pages/catalogs/Category.vue"),
             }
         ]
     },

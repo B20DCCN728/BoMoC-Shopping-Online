@@ -7,7 +7,7 @@
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
           <a-breadcrumb-item>Home</a-breadcrumb-item>
-          <a-breadcrumb-item>Dashboard</a-breadcrumb-item>
+          <a-breadcrumb-item>{{ toUpperCaseFirtLetter($route.name) }}</a-breadcrumb-item>
         </a-breadcrumb>
         <div :style="{ padding: '24px', background: '#fff', minHeight: '360px' }">
           <!-- Nguyen Hoang Viet is B20DCCN728 - PTIT -->
@@ -22,11 +22,31 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
-  import  Sidebar  from '../../components/admin/Sidebar.vue';
-  import Header from '../../components/admin/Header.vue';
+import { ref, reactive, computed, watch } from 'vue';
+import  Sidebar  from '../../components/admin/Sidebar.vue';
+import Header from '../../components/admin/Header.vue';
+import { useRouter } from 'vue-router';
 
-  const selectedKeys = ref(['1']);  
+// Define variables
+const router = useRouter();
+const selectedKeys = ref(['1']);
+
+// Determine the current toolbar
+if(router.currentRoute.value.name === "dashboard") {
+  selectedKeys.value = ['1'];
+} else if(router.currentRoute.value.name === "creator") {
+  selectedKeys.value = ['12'];
+} else if(router.currentRoute.value.name === "product") {
+  selectedKeys.value = ['9'];
+} else if(router.currentRoute.value.name === "category") {
+  selectedKeys.value = ['10'];
+}
+
+
+// Upper case first letter    
+const toUpperCaseFirtLetter = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
 </script>
 

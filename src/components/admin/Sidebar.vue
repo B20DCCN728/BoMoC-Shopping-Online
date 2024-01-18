@@ -18,7 +18,6 @@ const props = defineProps({
 });
 
 const collapsed = ref(false);
-
 </script>
 
 <template>
@@ -27,15 +26,22 @@ const collapsed = ref(false);
           <a-menu-item 
             key="1" 
             @click="() => {
-                selectedKeys = ['1']
                 this.$router.push(`/dashboard`)
+                selectedKeys = ['1']
               }
             "
           >
             <pie-chart-outlined />
             <span>Dashboard</span>
           </a-menu-item>
-          <a-menu-item key="2">
+          <a-menu-item 
+            key="2"
+            @click="() => {
+                this.$router.push(`/dashboard`)
+                selectedKeys = ['2']
+              }
+            "
+          >
             <desktop-outlined />
             <span>Tài khoản</span>
           </a-menu-item>
@@ -67,14 +73,27 @@ const collapsed = ref(false);
                 <span>Catalog</span>
               </span>
             </template>
-            <a-menu-item key="9">Sản phẩm</a-menu-item>
-            <a-menu-item key="10">Categories</a-menu-item>
+            <a-menu-item key="9"
+              @click="() => {
+                  this.$router.push(`/product`)
+                  selectedKeys = ['9']
+                }
+              "
+            >
+            Sản phẩm</a-menu-item>
+            <a-menu-item key="10"
+              @click="() => {
+                  this.$router.push(`/category`)
+                  selectedKeys = ['10']
+                }
+              "
+            >Categories</a-menu-item>
             <a-menu-item key="11">Phiếu giảm giá</a-menu-item>
           </a-sub-menu>
           <a-menu-item key="12"
           @click="() => {
-                selectedKeys = ['12']
                 this.$router.push(`/creator`)
+                selectedKeys = ['12']
               }
             "
           >
