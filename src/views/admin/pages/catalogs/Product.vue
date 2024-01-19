@@ -1,15 +1,24 @@
 <script setup>
 import { computed, ref, unref, reactive, h } from 'vue';
 import { Table } from 'ant-design-vue';
+import ClockCircleOutlined from '@ant-design/icons-vue/ClockCircleOutlined';
+import SearchOutlined from '@ant-design/icons-vue/SearchOutlined';
+import DownloadOutlined from '@ant-design/icons-vue/DownloadOutlined';
+import ContentEditor from '../../../../components/ckeditors/ContentEditor.vue';
+
 const columns = [
   {
     title: 'Id',
     dataIndex: 'id',  
   },
   {
-    title: 'Tên',
+    title: 'Tên sách',
     dataIndex: 'name',
     width: '12%',
+  },
+  {
+    title: 'Tác giả',
+    dataIndex: 'author',
   },
   {
     title: 'Hình ảnh',
@@ -37,6 +46,7 @@ const columns = [
   {
     title: 'Số lượng',
     dataIndex: 'quantity',
+    width: '8%',
   },
   { 
     title: 'Ngày tạo',
@@ -45,6 +55,7 @@ const columns = [
   {
     title: 'Số lượng trang',
     dataIndex: 'pages',
+    width: '11%',
   },
   {
     title: 'Thể loại',
@@ -52,11 +63,12 @@ const columns = [
   }
 ];
 const data = [];
-for (let i = 0; i < 46; i++) {
+for (let i = 0; i < 100; i++) {
   data.push({
     key: i,
     id: i,
     name: `Edward King ${i}`,
+    author: `Nguyễn Thị Khánh Huyền`,
     price: '120.000$',
     image: '',
     quantity: 56,
@@ -176,19 +188,49 @@ const onClose = () => {
   open.value = false;
 };
 
+
+// Setting search bar
+
+const checked = ref(false);
+
+const size = ref(8);
+
 </script>
 
 <template>
     <div>
         <h1>Quản lí sản phẩm</h1>
 
-        <a-button type="primary" @click="showDrawer">
+        <div>
+          <a-slider v-model:value="size" />
+          <br />
+          <br />
+          <a-space :size="size">
+            <a-input-search status="warning" v-model:value.lazy="value1" autofocus placeholder="Type something in here" loading>
+              <template #prefix><ClockCircleOutlined /></template>
+            </a-input-search>
+            <a-button type="primary">Filter</a-button>
+            <a-button>Default</a-button>
+            <a-button type="dashed" :icon="h(SearchOutlined)">Dashed</a-button>
+            <a-button type="link" :icon="h(SearchOutlined)">Link</a-button>
+            <a-button type="primary" loading>Loading</a-button>
+            <a-button type="primary" :size="size">
+              <template #icon>
+                <DownloadOutlined />
+              </template>
+              Export to Excel
+            </a-button>
+          </a-space>
+        </div>
+        
+        <!-- Button add new product -->
+        <a-button type="primary" @click="showDrawer" style="margin: 12px 12px 0 0">
           <template #icon><PlusOutlined /></template>
           Thêm sản phẩm
         </a-button>
         <a-drawer
           title="Create a new product"
-          :width="720"
+          :width="850"
           :open="open"
           :body-style="{ paddingBottom: '80px' }"
           :footer-style="{ textAlign: 'right' }"
@@ -294,6 +336,13 @@ const onClose = () => {
                 </a-form-item>
               </a-col>
             </a-row>
+            <a-row :gutter="16">
+              <a-col :span="24">
+                <a-form-item label="Description" name="description">
+                  <content-editor />
+                </a-form-item>
+              </a-col>
+            </a-row>
           </a-form>
           <template #extra>
             <a-space>
@@ -302,22 +351,36 @@ const onClose = () => {
             </a-space>
           </template>
         </a-drawer>
+        
+        <a-checkbox v-model:checked="checked">Reset</a-checkbox>
 
         <!-- Table of content -->
-        <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" bordered >
-          <template #bodyCell="{ column, text, record }">
-            <template v-if="column.dataIndex === 'image'">
-              <div class="image-cell">
-                <img src="../../../../assets/imgs/doraemon_2.jpg" alt="Doraemon" class="image-cell__element">
-              </div>
+        <div class="product-table">
+          <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" bordered >
+            <template #bodyCell="{ column, text, record }">
+              <template v-if="column.dataIndex === 'image'">
+                <div class="image-cell">
+                  <img src="../../../../assets/imgs/doraemon_2.jpg" alt="Doraemon" class="image-cell__element">
+                </div>
+              </template>
             </template>
-          </template>
-        </a-table>   
+          </a-table>   
+        </div>
 
     </div>
 </template>
 
 <style lang="less" scoped>
+
+.product-table {
+  margin: 20px 0 0 0;
+}
+
+::v-deep .ant-table .ant-table-thead tr .ant-table-cell {
+  background-color: #e8eff5;
+  padding: 6px 16px !important; /* Adjust as needed */
+}
+
 ::v-deep .ant-table .ant-table-thead tr .ant-table-cell {
   background-color: #e8eff5;
   padding: 6px 16px !important; /* Adjust as needed */
