@@ -1,19 +1,34 @@
 <script setup>
-import { computed, ref, unref, reactive } from 'vue';
+import { computed, ref, unref, reactive, h } from 'vue';
 import { Table } from 'ant-design-vue';
 const columns = [
   {
     title: 'Id',
-    dataIndex: 'id',
+    dataIndex: 'id',  
   },
   {
     title: 'Tên',
     dataIndex: 'name',
+    width: '12%',
   },
   {
     title: 'Hình ảnh',
     dataIndex: "image",
-    width: '15%',
+    width: '10%',
+    padding: 0,
+  //   customRender: ({ text, record }) => {
+  //   // Customize the cell content
+  //   const content = h('div', {
+  //     style: {
+  //       padding: '0px', // Adjust the padding value as needed
+  //     },
+  //   }, 'ok');
+
+  //   // Return an object with children property
+  //   return {
+  //     children: content
+  //   };
+  // },
   },
   {
     title: 'Giá',
@@ -303,17 +318,33 @@ const onClose = () => {
 </template>
 
 <style lang="less" scoped>
+::v-deep .ant-table .ant-table-thead tr .ant-table-cell {
+  background-color: #e8eff5;
+  padding: 6px 16px !important; /* Adjust as needed */
+}
+
+::v-deep .ant-table .ant-table-tbody tr .ant-table-cell {
+  padding: 10px 16px !important; /* Adjust as needed */
+}
+
+// ::v-deep .ant-table .ant-table-tbody tr .ant-table-cell:nth-child(2) {
+//   padding: 0 16px !important; /* Adjust as needed */
+// }
+
+::v-deep .ant-table .ant-table-tbody tr .ant-table-cell:nth-child(4) {
+  padding: 0 12px !important; /* Adjust as needed */
+}
 
 .image-cell {
   position: relative;
   display: flex;
+
   justify-content: center;
-  background-color: #c6fe9d;
   .image-cell__element {
-    padding-right: 1px;
+    padding-right: 0px;
   }
   .image-cell__element {
-    width: 50%;  
+    width: 40%;  
   }
 }
 
