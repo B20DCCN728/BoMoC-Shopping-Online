@@ -1,5 +1,5 @@
 <template>
-    <a-layout-header class="header">
+    <a-layout-header class="header" :style="{ position: 'fixed', zIndex: 1, width: '100%' }">
         <!-- <div class="logo">
         </div> -->
       <a-menu

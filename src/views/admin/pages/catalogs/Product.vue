@@ -199,7 +199,7 @@ const size = ref(8);
 
 <template>
     <div>
-        <h1>Quản lí sản phẩm</h1>
+        <h1>Sản phẩm</h1>
 
         <div>
           <a-slider v-model:value="size" />

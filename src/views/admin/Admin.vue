@@ -1,8 +1,8 @@
 <template>
   <Header />
   <a-layout style="min-height: 100vh">
-    <Sidebar :selected-keys="selectedKeys"/>
-    <a-layout>
+    <Sidebar :selected-keys="selectedKeys" :collapsed="collapsed" @prop-changed="updateProp"/>
+    <a-layout :style="{ marginLeft: marginLeft }">
       <!-- <a-layout-header style="background: #fff; padding: 0" /> -->
       <a-layout-content style="margin: 0 16px">
         <a-breadcrumb style="margin: 16px 0">
@@ -29,8 +29,19 @@ import { useRouter } from 'vue-router';
 
 // Define variables
 const router = useRouter();
+const collapsed = ref(false);
 const selectedKeys = ref(['1']);
 
+const marginLeft = ref('200px');
+
+const updateProp = (val) => {
+  collapsed.value = val;
+  if(val) {
+    marginLeft.value = '80px';
+  } else {
+    marginLeft.value = '200px';
+  }
+}
 // Determine the current toolbar
 if(router.currentRoute.value.name === "dashboard") {
   selectedKeys.value = ['1'];

@@ -10,18 +10,35 @@ FileDoneOutlined,
 SettingOutlined,
 FormOutlined,
 } from '@ant-design/icons-vue';
-import { ref, defineProps, computed, reactive } from 'vue';
+import { ref, defineProps, computed, reactive, watch, defineEmits } from 'vue';
 import { useRouter } from 'vue-router';
 
 const props = defineProps({
   selectedKeys: Array,
+  collapsed: Boolean,
 });
 
-const collapsed = ref(false);
+const emit = defineEmits(['prop-changed']);
+
+watch(() => props.collapsed, (newVal, oldVal) => {
+  emit('prop-changed', newVal);
+})
+
 </script>
 
 <template>
-    <a-layout-sider v-model:collapsed="collapsed" collapsible>
+    <a-layout-sider 
+      @update:collapsed="val => collapsed = val"
+      collapsible
+      :style="{
+        overflow: 'auto', 
+        height: '100vh', 
+        position: 'fixed', 
+        left: 0, 
+        top: '53.3px', 
+        bottom: 0 
+      }" 
+    >
         <a-menu :selected-keys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item 
             key="1" 
@@ -39,6 +56,7 @@ const collapsed = ref(false);
             @click="() => {
                 this.$router.push(`/dashboard`)
                 selectedKeys = ['2']
+                collapsed = !collapsed
               }
             "
           >
