@@ -13,6 +13,7 @@ const columns = [
   {
     title: 'Hình ảnh',
     dataIndex: "image",
+    width: '15%',
   },
   {
     title: 'Giá',
@@ -49,6 +50,7 @@ for (let i = 0; i < 46; i++) {
     genre: `Joke ${i}`,
   });
 }
+
 const selectedRowKeys = ref([]); // Check here to configure the default column
 
 const onSelectChange = changableRowKeys => {
@@ -163,7 +165,7 @@ const onClose = () => {
 
 <template>
     <div>
-        <h1>Product Manager</h1>
+        <h1>Quản lí sản phẩm</h1>
 
         <a-button type="primary" @click="showDrawer">
           <template #icon><PlusOutlined /></template>
@@ -289,8 +291,9 @@ const onClose = () => {
         <!-- Table of content -->
         <a-table :row-selection="rowSelection" :columns="columns" :data-source="data" bordered >
           <template #bodyCell="{ column, text, record }">
-            <template v-if="column.dataIndex === 'name'">
-              <div class="">
+            <template v-if="column.dataIndex === 'image'">
+              <div class="image-cell">
+                <img src="../../../../assets/imgs/doraemon_2.jpg" alt="Doraemon" class="image-cell__element">
               </div>
             </template>
           </template>
@@ -300,6 +303,20 @@ const onClose = () => {
 </template>
 
 <style lang="less" scoped>
+
+.image-cell {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: #c6fe9d;
+  .image-cell__element {
+    padding-right: 1px;
+  }
+  .image-cell__element {
+    width: 50%;  
+  }
+}
+
 .editable-cell {
   position: relative;
   .editable-cell-input-wrapper,
