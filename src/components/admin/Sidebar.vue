@@ -35,9 +35,11 @@ watch(() => props.collapsed, (newVal, oldVal) => {
         height: '100vh', 
         position: 'fixed', 
         left: 0, 
-        top: '53.3px', 
-        bottom: 0 
+        top: '48px', 
+        bottom: 0,
       }" 
+      width="200"
+      collapsedWidth="56"
     >
         <a-menu :selected-keys="selectedKeys" theme="dark" mode="inline">
           <a-menu-item 

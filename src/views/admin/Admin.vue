@@ -37,7 +37,7 @@ const marginLeft = ref('200px');
 const updateProp = (val) => {
   collapsed.value = val;
   if(val) {
-    marginLeft.value = '80px';
+    marginLeft.value = '56px';
   } else {
     marginLeft.value = '200px';
   }
